@@ -1,34 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useState } from 'react';
+import MouseTooltip from 'react-sticky-mouse-tooltip';
+
+import Sidebar from './components/Sidebar';
+import MapChart from './components/Map';
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [config, setConfig] = useState({});
+    const [content, setContent] = useState("");
 
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    return (
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden bg-white">        
+        <MapChart setTooltipContent={setContent} />
+        <MouseTooltip
+          visible={content !== ""}
+          offsetX={15}
+          offsetY={10}
+        >
+          <div class="bg-black bg-opacity-75 text-white text-center rounded-md p-2">
+            <span>{content}</span>
+          </div>
+        </MouseTooltip>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    );
 }
 
-export default App
+export default App;
