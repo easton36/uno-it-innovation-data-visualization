@@ -10,10 +10,13 @@
   },
   "dependencies": {
     "@tippyjs/react": "^4.2.6",
+    "list-react-files": "^0.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-select": "^5.7.0",
     "react-simple-maps": "^3.0.0",
-    "react-sticky-mouse-tooltip": "^0.0.1"
+    "react-sticky-mouse-tooltip": "^0.0.1",
+    "react-tooltip": "^5.8.3"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",

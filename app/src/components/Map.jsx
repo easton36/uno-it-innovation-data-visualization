@@ -7,9 +7,7 @@ import {
 } from "react-simple-maps";
 import geography from '../data/features.json';
 
-const MapChart = ({ setTooltipContent }) => {
-    const [selected, setSelected] = useState([]);
-
+const MapChart = ({ setTooltipContent, comparedCountries, setComparedCountries }) => {
     return (
         <ComposableMap class="h-full w-full">
             <ZoomableGroup>
@@ -25,16 +23,18 @@ const MapChart = ({ setTooltipContent }) => {
                             onClick={() => {
                                 // if ctrl key is held down, add to selection
                                 if (window.event.ctrlKey) {
-                                    if (selected.includes(geo.properties.name)) {
-                                        setSelected(selected.filter((s) => s !== geo.properties.name));
+                                    if (comparedCountries.includes(geo.properties.name)) {
+                                        setComparedCountries(comparedCountries.filter((s) => s !== geo.properties.name));
                                     } else {
-                                        setSelected([...selected, geo.properties.name]);
+                                        setComparedCountries([...comparedCountries, geo.properties.name]);
                                     }
+                                } else{
+                                    
                                 }
                             }}
                             style = {{
                                 default: {
-                                    fill: selected.includes(geo.properties.name) ? "#F53" : "#D6D6DA",
+                                    fill: comparedCountries.includes(geo.properties.name) ? "#F53" : "#D6D6DA",
                                     outline: "none"
                                 },
                                 hover: {
